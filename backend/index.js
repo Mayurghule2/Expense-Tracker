@@ -22,7 +22,7 @@ app.use(cors({
 app.options('*', cors());
 
 app.use(bodyParser.json());
-app.use(cors());
+
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 app.use('/expenses', ensureAuthenticated, ExpenseRouter)
