@@ -11,9 +11,6 @@ require('dotenv').config();
 require('./Models/db');
 const PORT = process.env.PORT || 8080;
 
-app.get('/ping', (req, res) => {
-    res.send('PONG');
-});
 app.use(cors({
   origin: 'https://expense-tracker-orry-aty3lqchc-mayurs-projects-f058cfbf.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -27,6 +24,9 @@ app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 app.use('/expenses', ensureAuthenticated, ExpenseRouter)
 
+app.get('/ping', (req, res) => {
+    res.send('PONG');
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)
